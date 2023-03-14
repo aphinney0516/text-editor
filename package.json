@@ -1,26 +1,31 @@
 {
-  "name": "jate",
+  "name": "text-editor",
   "version": "1.0.0",
   "description": "A simple text editor",
   "main": "server.js",
   "scripts": {
-    "server": "nodemon server.js --ignore client"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "express": "^4.18.2"
-  },
-  "devDependencies": {
-    "nodemon": "^2.0.4"
+    "start:dev": "concurrently \"cd server && npm run server\" \"cd client && npm run dev\"",
+    "start": "npm run build && cd server && node server.js",
+    "server": "cd server nodemon server.js --ignore client",
+    "build": "cd client && npm run build",
+    "install": "cd server && npm i && cd ../client && npm i",
+    "client": "cd client && npm start"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/aphinney0516/text-editor.git"
   },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
   "bugs": {
     "url": "https://github.com/aphinney0516/text-editor/issues"
   },
-  "homepage": "https://github.com/aphinney0516/text-editor#readme"
+  "homepage": "https://github.com/aphinney0516/text-editor#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "concurrently": "^5.2.0"
+  }
 }
